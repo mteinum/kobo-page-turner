@@ -3,10 +3,22 @@ name: Arduino Build
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      - '**.ino'
+      - '**.h'
+      - '**.cpp'
+      - 'patches/**'
+      - '.github/workflows/build.yml'
     tags:
       - 'v*'
   pull_request:
     branches: [ main ]
+    paths:
+      - '**.ino'
+      - '**.h'
+      - '**.cpp'
+      - 'patches/**'
+      - '.github/workflows/build.yml'
 
 permissions:
   contents: write

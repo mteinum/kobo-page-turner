@@ -1,4 +1,4 @@
-# Single button page turner (SBPT)
+# Single Button Page Turner (SBPT)
 
 [![Arduino Build](https://github.com/mteinum/single-button-page-turner/actions/workflows/build.yml/badge.svg)](https://github.com/mteinum/single-button-page-turner/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -40,9 +40,9 @@ pip install esptool
 
 # Flash all three binary files
 esptool.py --chip esp32s3 --port /dev/ttyUSB0 --baud 921600 write_flash -z \
-  0x0 kobo-page-turner.ino.bootloader.bin \
-  0x8000 kobo-page-turner.ino.partitions.bin \
-  0x10000 kobo-page-turner.ino.bin
+  0x0 single-button-page-turner.ino.bootloader.bin \
+  0x8000 single-button-page-turner.ino.partitions.bin \
+  0x10000 single-button-page-turner.ino.bin
 ```
 
 **Note**: Replace `/dev/ttyUSB0` with your port:
@@ -54,9 +54,9 @@ esptool.py --chip esp32s3 --port /dev/ttyUSB0 --baud 921600 write_flash -z \
 1. Download [Espressif Flash Download Tool](https://www.espressif.com/en/support/download/other-tools)
 2. Select ESP32-S3
 3. Load the binary files:
-   - `0x0` → `kobo-page-turner.ino.bootloader.bin`
-   - `0x8000` → `kobo-page-turner.ino.partitions.bin`
-   - `0x10000` → `kobo-page-turner.ino.bin`
+   - `0x0` → `single-button-page-turner.ino.bootloader.bin`
+   - `0x8000` → `single-button-page-turner.ino.partitions.bin`
+   - `0x10000` → `single-button-page-turner.ino.bin`
 4. Select your COM port and click "Start"
 
 ### Method 2: Build from Source

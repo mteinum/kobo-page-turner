@@ -1,5 +1,5 @@
 /*
- * Single button page turner (SBPT) - BLE Keyboard Controller for M5Stack AtomS3
+ * Single Button Page Turner (SBPT) - BLE Keyboard Controller for M5Stack AtomS3
  * 
  * Author: Morten Teinum (morten.teinum@gmail.com)
  * Date: December 11, 2025
