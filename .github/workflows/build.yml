@@ -39,8 +39,7 @@ jobs:
         
     - name: Compile sketch
       run: |
-        cd src
-        arduino-cli compile --fqbn esp32:esp32:m5stack_atoms3 --output-dir ../build kobo-page-turner.ino
+        arduino-cli compile --fqbn esp32:esp32:m5stack_atoms3 --output-dir build src
         
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
