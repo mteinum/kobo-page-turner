@@ -24,8 +24,13 @@ jobs:
     - name: Install required libraries
       run: |
         arduino-cli lib install "M5Unified"
-        arduino-cli lib install "ESP32 BLE Keyboard"
+        wget https://github.com/T-vK/ESP32-BLE-Keyboard/releases/download/0.3.0/ESP32-BLE-Keyboard.zip
+        unzip ESP32-BLE-Keyboard.zip -d ~/Arduino/libraries/
+        
+    - name: Apply BLE Keyboard patch
+      run: |
+        patch -p1 -d ~/Arduino/libraries/ESP32_BLE_Keyboard < patches/BleKeyboard.patch
         
     - name: Compile sketch
       run: |
-        arduino-cli compile --fqbn esp32:esp32:esp32s3 kobo-page-turner.ino
+        arduino-cli compile --fqbn esp32:esp32:m5stack_atoms3 kobo-page-turner.ino
