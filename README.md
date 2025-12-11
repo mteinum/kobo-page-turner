@@ -1,6 +1,6 @@
 # Single button page turner (SBPT)
 
-[![Arduino Build](https://github.com/mteinum/kobo-page-turner/actions/workflows/build.yml/badge.svg)](https://github.com/mteinum/kobo-page-turner/actions/workflows/build.yml)
+[![Arduino Build](https://github.com/mteinum/single-button-page-turner/actions/workflows/build.yml/badge.svg)](https://github.com/mteinum/single-button-page-turner/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-ESP32-blue.svg)](https://www.espressif.com/en/products/socs/esp32)
 
@@ -32,7 +32,7 @@ Morten Teinum (morten.teinum@gmail.com)
 
 ### Method 1: Pre-compiled Firmware (Easiest)
 
-Download the latest firmware from [Releases](https://github.com/mteinum/kobo-page-turner/releases)
+Download the latest firmware from [Releases](https://github.com/mteinum/single-button-page-turner/releases)
 
 #### Using esptool (Command Line)
 ```bash
@@ -79,7 +79,7 @@ A patch file is provided in `patches/BleKeyboard.patch`. After installing the ES
 
 ```bash
 cd ~/Arduino/libraries/ESP32-BLE-Keyboard
-patch -p1 < /path/to/kobo-page-turner/patches/BleKeyboard.patch
+patch -p1 < /path/to/single-button-page-turner/patches/BleKeyboard.patch
 ```
 
 <details>
