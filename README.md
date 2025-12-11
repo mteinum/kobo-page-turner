@@ -37,67 +37,32 @@ Morten Teinum (morten.teinum@gmail.com)
 
 ### ESP32 BLE Keyboard Library Modifications
 
-The project requires a modified version of the ESP32 BLE Keyboard library. Apply the following patch to `BleKeyboard.cpp`:
+The project requires a modified version of the ESP32 BLE Keyboard library (v0.3.0) to enhance BLE security and compatibility with Kobo e-readers.
+
+#### Applying the Patch
+
+A patch file is provided in `patches/BleKeyboard.patch`. After installing the ESP32 BLE Keyboard library:
+
+```bash
+cd ~/Arduino/libraries/ESP32-BLE-Keyboard
+patch -p1 < /path/to/kobo-page-turner/patches/BleKeyboard.patch
+```
+
+#### Key Modifications
+
+The patch makes the following changes:
+- **Enhanced BLE Security**: Upgrades authentication to `ESP_LE_AUTH_REQ_SC_MITM_BOND` for better pairing security
+- **NimBLE Support**: Adds conditional compilation for NimBLE stack
+- **String Compatibility**: Fixes string initialization for device name and manufacturer
+- **Configurable Device IDs**: Adds methods to set vendor ID, product ID, and version
+- **Notification Management**: Properly handles BLE descriptor notifications
 
 <details>
-<summary>Click to view the required patch</summary>
+<summary>View complete patch content</summary>
 
-```diff
-diff BleKeyboard.cpp ~/Documents/Arduino/libraries/ESP32_BLE_Keyboard/BleKeyboard.cpp
-0a1,2
-> #include "BleKeyboard.h"
->
-17d18
-< #include "BleKeyboard.h"
-105c106
-<   BLEDevice::init(deviceName);
----
->   BLEDevice::init(String(deviceName.c_str()));
-116c117
-<   hid->manufacturer()->setValue(deviceManufacturer);
----
->   hid->manufacturer()->setValue(String(deviceManufacturer.c_str()));
-118c119
-<   hid->pnp(0x02, 0xe502, 0xa111, 0x0210);
----
->   hid->pnp(0x02, vid, pid, version);
-120a122,128
->
-> #if defined(USE_NIMBLE)
->
->   BLEDevice::setSecurityAuth(true, true, true);
->
-> #else
->
-121a130
->   pSecurity->setAuthenticationMode(ESP_LE_AUTH_REQ_SC_MITM_BOND);
-123c132
-<   pSecurity->setAuthenticationMode(ESP_LE_AUTH_BOND);
----
-> #endif // USE_NIMBLE
-167a177,188
-> void BleKeyboard::set_vendor_id(uint16_t vid) {
-> 	this->vid = vid;
-> }
->
-> void BleKeyboard::set_product_id(uint16_t pid) {
-> 	this->pid = pid;
-> }
->
-> void BleKeyboard::set_version(uint16_t version) {
-> 	this->version = version;
-> }
->
-482a504,513
->
-> #if !defined(USE_NIMBLE)
->
->   BLE2902* desc = (BLE2902*)this->inputKeyboard->getDescriptorByUUID(BLEUUID((uint16_t)0x2902));
->   desc->setNotifications(true);
->   desc = (BLE2902*)this->inputMediaKeys->getDescriptorByUUID(BLEUUID((uint16_t)0x2902));
->   desc->setNotifications(true);
->
-> #endif // !USE_NIMBLE
+The patch file is located at `patches/BleKeyboard.patch` in this repository. It contains all necessary modifications to make the ESP32 BLE Keyboard library compatible with Kobo e-readers.
+
+</details>
 >
 486a518
 >
