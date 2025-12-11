@@ -56,7 +56,7 @@ void drawStatusIcon(bool connected) {
 void drawBaseScreen() {
   M5.Display.fillScreen(BLACK);
   M5.Display.setTextColor(WHITE);
-  M5.Display.setTextSize(3);
+  M5.Display.setTextSize(2);
   M5.Display.setTextDatum(middle_center);
 
   int cx = M5.Display.width()  / 2;
