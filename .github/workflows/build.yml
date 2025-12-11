@@ -61,7 +61,7 @@ jobs:
       run: |
         arduino-cli lib install "M5Unified"
         wget https://github.com/T-vK/ESP32-BLE-Keyboard/releases/download/0.3.0/ESP32-BLE-Keyboard.zip
-        unzip ESP32-BLE-Keyboard.zip -d ~/Arduino/libraries/
+        unzip -o ESP32-BLE-Keyboard.zip -d ~/Arduino/libraries/
         
     - name: Apply BLE Keyboard patch
       run: |
