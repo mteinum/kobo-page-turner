@@ -63,26 +63,7 @@ The patch makes the following changes:
 The patch file is located at `patches/BleKeyboard.patch` in this repository. It contains all necessary modifications to make the ESP32 BLE Keyboard library compatible with Kobo e-readers.
 
 </details>
->
-486a518
->
-487a520,525
->
->   BLE2902* desc = (BLE2902*)this->inputKeyboard->getDescriptorByUUID(BLEUUID((uint16_t)0x2902));
->   desc->setNotifications(false);
->   desc = (BLE2902*)this->inputMediaKeys->getDescriptorByUUID(BLEUUID((uint16_t)0x2902));
->   desc->setNotifications(false);
->
-489c527,528
-< #endif  // !USE_NIMBLE
----
->
-> #endif // !USE_NIMBLE
-```
 
-</details>
-
-These modifications enhance the BLE security and compatibility with Kobo e-readers.
 
 ### Upload Instructions
 
